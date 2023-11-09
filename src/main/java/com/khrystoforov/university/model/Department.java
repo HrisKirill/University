@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -26,6 +25,7 @@ public class Department {
 
     @OneToMany(
             mappedBy = "department",
+            cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private Set<DepartmentLector> lectors = new HashSet<>();
@@ -47,18 +47,6 @@ public class Department {
                 departmentLector.setLector(null);
             }
         }
-    }
-
-    @Transient
-    public BigDecimal getAverageSalary() {
-        BigDecimal averageSalary = BigDecimal.ZERO;
-        int countOfLectors = this.getLectors().size();
-        for (DepartmentLector departmentLector :
-                this.getLectors()) {
-            averageSalary = averageSalary.add(departmentLector.getLectorSalary());
-        }
-
-        return averageSalary.divide(BigDecimal.valueOf(countOfLectors), 4, RoundingMode.CEILING);
     }
 
 }
