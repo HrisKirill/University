@@ -40,7 +40,12 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!--Hypersistence-->
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistence-utils.version}</version>
+        </dependency>
         <!-- Mapper -->
         <dependency>
             <groupId>org.mapstruct</groupId>
