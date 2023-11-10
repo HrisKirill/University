@@ -5,9 +5,11 @@ import com.khrystoforov.university.model.Department;
 import com.khrystoforov.university.repository.DepartmentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class DepartmentServiceTest {
 
     @Mock
@@ -23,11 +26,6 @@ class DepartmentServiceTest {
 
     @InjectMocks
     private DepartmentService departmentService;
-
-    @BeforeEach
-    void init_mocks() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     public void testCreateDepartment() {
